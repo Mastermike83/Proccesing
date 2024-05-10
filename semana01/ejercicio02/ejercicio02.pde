@@ -11,7 +11,7 @@ public void draw(){
   noLoop();
   
   cociente=numA/numB;
-  print("el resultado de la suma es " + cociente);
-  resto=numA-(cociente*numB);
-  print(" y sobran " + resto);
+  resto=numA%numB;
+  print("el resultado de la suma es " + cociente+" y sobran " + resto);
+ 
 }
