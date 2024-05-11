@@ -4,7 +4,7 @@ int S, N;
 
   public void setup() {
 
-  N=4;
+  N=40;
 }
 
 public void draw() {
