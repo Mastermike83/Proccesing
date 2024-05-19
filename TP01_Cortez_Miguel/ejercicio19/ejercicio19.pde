@@ -15,9 +15,9 @@ public void setup() {
   puntoInicialLinea=new PVector(0, 0);
   puntoFinalLinea=new PVector(width, 0);
   velocidadLinea=new PVector(0, 2);
-    radioCirculo = 40;
+  radioCirculo = 40;
   posicionCirculo=new PVector(width/2, radioCirculo);
-  velocidadCirculo=new PVector(0,2);
+  velocidadCirculo=new PVector(0, 2);
 }
 public void draw() {
   background(0);
@@ -35,17 +35,22 @@ public void desplazarLinea() {
   if (puntoInicialLinea.y>height || puntoInicialLinea.y<0) {
     velocidadLinea.y=velocidadLinea.y*-1;
   }
-    puntoInicialLinea.y+=velocidadLinea.y;
-    puntoFinalLinea.y+=velocidadLinea.y;
-  }
+  puntoInicialLinea.y+=velocidadLinea.y;
+  puntoFinalLinea.y+=velocidadLinea.y;
+}
 
 public void   dibujarCirculo() {
   fill(#17FF28);
-  ellipse(posicionCirculo.x,posicionCirculo.y,2*radioCirculo,2*radioCirculo);
+  ellipse(posicionCirculo.x, posicionCirculo.y, 2*radioCirculo, 2*radioCirculo);
 }
-public void desplazarCirculo(){
-  if (posicionCirculo.y>height || puntoInicialLinea.y<0) { 
+public void desplazarCirculo() {
+  if ((posicionCirculo.y-radioCirculo) >height || posicionCirculo.y +radioCirculo <0) {
     velocidadCirculo.y*=(-1);
-  }
-  posicionCirculo.y+=velocidadCirculo.y;
+     if ((posicionCirculo.y-radioCirculo) >height) {
+       posicionCirculo.y=posicionCirculo.y-2*radioCirculo;
+     }else{
+         posicionCirculo.y=posicionCirculo.y+2*radioCirculo;
+     }
+  }posicionCirculo.y+=velocidadCirculo.y;
+  
 }
