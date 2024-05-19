@@ -2,6 +2,9 @@ int ancho, alto;
 PVector puntoInicialLinea;
 PVector puntoFinalLinea;
 PVector velocidadLinea;
+PVector velocidadCirculo;
+PVector posicionCirculo;
+int radioCirculo;
 int posLineaY=0;
 
 public void settings() {
@@ -12,12 +15,16 @@ public void setup() {
   puntoInicialLinea=new PVector(0, 0);
   puntoFinalLinea=new PVector(width, 0);
   velocidadLinea=new PVector(0, 2);
+    radioCirculo = 40;
+  posicionCirculo=new PVector(width/2, radioCirculo);
+  velocidadCirculo=new PVector(0,2);
 }
 public void draw() {
   background(0);
   dibujarLinea();
   desplazarLinea();
   dibujarCirculo();
+  desplazarCirculo();
 }
 public void dibujarLinea() {
   strokeWeight(5);
@@ -34,5 +41,11 @@ public void desplazarLinea() {
 
 public void   dibujarCirculo() {
   fill(#17FF28);
-  ellipse(width/2, puntoInicialLinea.y+40, 80, 80);
+  ellipse(posicionCirculo.x,posicionCirculo.y,2*radioCirculo,2*radioCirculo);
+}
+public void desplazarCirculo(){
+  if (posicionCirculo.y>height || puntoInicialLinea.y<0) { 
+    velocidadCirculo.y*=(-1);
+  }
+  posicionCirculo.y+=velocidadCirculo.y;
 }
